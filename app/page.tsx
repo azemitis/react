@@ -7,6 +7,9 @@ export default function Home() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [experience, setExperience] = useState("");
+    const [company, setCompany] = useState("");
+    const [jobTitle, setJobTitle] = useState("");
+    const [date, setDate] = useState("");
 
     const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -22,6 +25,18 @@ export default function Home() {
 
     const handleExperienceChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setExperience(event.target.value);
+    };
+
+    const handleCompanyChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setCompany(event.target.value);
+    };
+
+    const handleJobTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setJobTitle(event.target.value);
+    };
+
+    const handleDateChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setDate(event.target.value);
     };
 
     return (
@@ -106,6 +121,15 @@ export default function Home() {
                 </div>
                 <div style={{ marginBottom: "10px" }}>
                     <strong>Experience:</strong> {experience}
+                </div>
+                <div style={{ marginBottom: "10px" }}>
+                    <strong>Company:</strong> {experience}
+                </div>
+                <div style={{ marginBottom: "10px" }}>
+                    <strong>JobTitle:</strong> {experience}
+                </div>
+                <div style={{ marginBottom: "10px" }}>
+                    <strong>Date:</strong> {experience}
                 </div>
             </div>
         </div>
