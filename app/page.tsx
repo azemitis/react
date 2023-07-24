@@ -2,7 +2,7 @@
 
 import {useState, ChangeEvent} from "react";
 import IconButton from './IconButton';
-import {ContainerStyles, InputStyles} from './inputStyles'; // Import both styles
+import {ContainerStyles, InputStyles} from './inputStyles';
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
     const [name, setName] = useState("");
@@ -76,10 +76,9 @@ export default function Home() {
 
     return (
         <div className="flex">
-            <div className="flex-2 ml-20 my-10 border border-gray-300 rounded-lg shadow-md p-6 bg-gray-200
-             space-y-4">
+            <div className="w-1/3 ml-20 my-10 border border-gray-200 rounded-lg shadow-md p-6 bg-yellow-50 space-y-4">
 
-            {/*Input section*/}
+                {/*Input section*/}
                 <h2 className="text-3xl my-5 text-center">Create your CV</h2>
 
                 {/* Add main fields */}
@@ -227,50 +226,69 @@ export default function Home() {
             </div>
 
             {/*Display input*/}
-            <div style={{flex: 3, marginLeft: "20px"}}>
+            <div className="w-2/3 mx-20 my-10">
 
-                {/* Main CV info */}
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Name:</strong> {name}
-                </div>
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Profession:</strong> {profession}
-                </div>
-                <h3>Details</h3>
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Email:</strong> {email}
-                </div>
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Phone:</strong> {phone}
-                </div>
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Address:</strong> {address}
-                </div>
-                <div style={{marginBottom: "10px"}}>
-                    <strong>Profile:</strong> {profile}
-                </div>
+                <div className="bg-white border rounded-lg shadow-md p-6 mb-4 flex">
 
-                {/* Display multiple jobs */}
-                <div>
-                    {experiences.map((experience, index) => (
-                        <div key={index}>
-                            <h3>Job {index + 1}</h3>
-                            <div>
-                                <strong>Title:</strong> {experience.title}
-                            </div>
-                            <div>
-                                <strong>Company:</strong> {experience.company}
-                            </div>
-                            <div>
-                                <strong>Date:</strong> {experience.date}
-                            </div>
-                            <div>
-                                <strong>Description:</strong> {experience.description}
-                            </div>
+                    <div className="flex-1 mr-4">
+                        {/*Main info*/}
+                        <div className="mb-4">
+                            <span className="text-6xl font-bold"> {name} </span>
+                            <span className="text-gray-300">name</span>
                         </div>
-                    ))}
-                </div>
+                        <div className="mb-4">
+                            <span className="text-2xl"> {profession} </span>
+                            <span className="text-gray-300">profession</span>
+                        </div>
+                        <div className="mb-4">
+                            <span className="text-xl">Profile</span>
+                            <div>{profile}</div>
+                        </div>
 
+                        {/* Display multiple jobs */}
+                        {experiences.map((experience, index) => (
+                            <div key={index} className="mb-4">
+                                <h3 className="text-xl text-gray-300">Job {index + 1}</h3>
+                                <div className="mb-2">
+                                    <span className="text-xl font-bold"> {experience.title} </span>
+                                    <span className="text-gray-300">title</span>
+                                </div>
+                                <div className="mb-2">
+                                    <span className="text-gray-500"> {experience.date} </span>
+                                    <span className="text-gray-300">date</span>
+                                </div>
+                                <div className="mb-2">
+                                    <span className="text-xl"> {experience.company} </span>
+                                    <span className="text-gray-300">company</span>
+                                </div>
+                                <div className="mb-2">
+                                    <div dangerouslySetInnerHTML={{
+                                        __html:
+                                            experience.description.replace(/\n/g, '<br>')
+                                    }}/>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Right side - Details */}
+                    <div className="flex-1/3 mt-20">
+                        {/*Details*/}
+                        <h3 className="text-xl font-bold mb-4">Details</h3>
+                        <div className="mb-4">
+                            <span> {email} </span>
+                            <span className="text-gray-300">email</span>
+                        </div>
+                        <div className="mb-4">
+                            <span> {phone} </span>
+                            <span className="text-gray-300">phone</span>
+                        </div>
+                        <div className="mb-4">
+                            <span> {address} </span>
+                            <span className="text-gray-300">address</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
