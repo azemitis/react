@@ -1,6 +1,7 @@
 "use client";
 
 import {useState, ChangeEvent} from "react";
+import IconButton from './IconButton';
 
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
@@ -262,13 +263,19 @@ export default function Home() {
                             />
                         </div>
 
-                        <button onClick={() => handleRemoveExperience(index)}>
-                            Remove Experience
-                        </button>
+                        <IconButton
+                            icon="fa-plus-circle"
+                            label="Add Experience"
+                            onClick={handleAddExperience}
+                        />
+                        <IconButton
+                            icon="fa-trash"
+                            label="Remove Experience"
+                            onClick={() => handleRemoveExperience(index)}
+                        />
                     </div>
                 ))}
 
-                <button onClick={handleAddExperience}>Add Experience</button>
             </div>
 
             {/*Display input*/}
