@@ -2,7 +2,7 @@
 
 import {useState, ChangeEvent} from "react";
 import IconButton from './IconButton';
-
+import {ContainerStyles, InputStyles} from './inputStyles'; // Import both styles
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
     const [name, setName] = useState("");
@@ -75,211 +75,159 @@ export default function Home() {
     };
 
     return (
-        <div style={{display: "flex"}}>
-            <div style={{flex: 1}}>
+        <div className="flex">
+            <div className="flex-2 ml-20 my-10 border border-gray-300 rounded-lg shadow-md p-6 bg-gray-200
+             space-y-4">
 
-                {/*Input section*/}
-                <h2>Input fields</h2>
+            {/*Input section*/}
+                <h2 className="text-3xl my-5 text-center">Create your CV</h2>
 
                 {/* Add main fields */}
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="nameInput">Name: </label>
-                    <input
-                        type="text"
-                        id="nameInput"
-                        value={name}
-                        onChange={handleNameChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px"
-                        }}
-                    />
-                </div>
-
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="professionInput">Profession: </label>
-                    <input
-                        type="text"
-                        id="professionInput"
-                        value={profession}
-                        onChange={handleProfessionChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px"
-                        }}
-                    />
-                </div>
-
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="emailInput">Email: </label>
-                    <input
-                        type="email"
-                        id="emailInput"
-                        value={email}
-                        onChange={handleEmailChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px"
-                        }}
-                    />
-                </div>
-
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="phoneInput">Phone: </label>
-                    <input
-                        type="tel"
-                        id="phoneInput"
-                        value={phone}
-                        onChange={handlePhoneChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px"
-                        }}
-                    />
-                </div>
-
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="addressInput">Address: </label>
-                    <input
-                        type="address"
-                        id="addressInput"
-                        value={address}
-                        onChange={handleAddressChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px"
-                        }}
-                    />
-                </div>
-
-                <div style={{marginBottom: "10px"}}>
-                    <label htmlFor="experienceInput">Profile: </label>
-                    <textarea
-                        id="profileInput"
-                        value={profile}
-                        onChange={handleProfileChange}
-                        style={{
-                            padding: "8px",
-                            border: "1px solid #ccc",
-                            borderRadius: "4px",
-                            fontSize: "16px",
-                            marginBottom: "10px",
-                            height: "100px"
-                        }}
-                    />
-                </div>
-
-                {/* Add multiple fields for many jobs */}
-                {experiences.map((experience, index) => (
-                    <div key={index}>
-                        <div style={{marginBottom: "10px"}}>
-                            <label htmlFor="titleInput">Title:</label>
-                            <input
-                                type="text"
-                                id="titleInput"
-                                value={experience.title}
-                                onChange={(e) =>
-                                    handleExperienceChange(index, "title", e.target.value)
-                                }
-                                style={{
-                                    padding: "8px",
-                                    border: "1px solid #ccc",
-                                    borderRadius: "4px",
-                                    fontSize: "16px",
-                                    marginBottom: "10px",
-                                }}
-                            />
-                        </div>
-
-                        <div style={{marginBottom: "10px"}}>
-                            <label htmlFor="companyInput">Company:</label>
-                            <input
-                                type="company"
-                                id="companyInput"
-                                value={experience.company}
-                                onChange={(e) =>
-                                    handleExperienceChange(index, "company", e.target.value)
-                                }
-                                style={{
-                                    padding: "8px",
-                                    border: "1px solid #ccc",
-                                    borderRadius: "4px",
-                                    fontSize: "16px",
-                                    marginBottom: "10px",
-                                }}
-                            />
-                        </div>
-
-                        <div style={{marginBottom: "10px"}}>
-                            <label htmlFor="dateInput">Date:</label>
-                            <input
-                                type="date"
-                                id="dateInput"
-                                value={experience.date}
-                                onChange={(e) =>
-                                    handleExperienceChange(index, "date", e.target.value)
-                                }
-                                style={{
-                                    padding: "8px",
-                                    border: "1px solid #ccc",
-                                    borderRadius: "4px",
-                                    fontSize: "16px",
-                                    marginBottom: "10px",
-                                }}
-                            />
-                        </div>
-
-                        <div style={{marginBottom: "10px"}}>
-                            <label htmlFor="experienceInput">Description</label>
-                            <textarea
-                                id="descriptionInput"
-                                value={experience.description}
-                                onChange={(e) =>
-                                    handleExperienceChange(index, "description", e.target.value)
-                                }
-                                style={{
-                                    padding: "8px",
-                                    border: "1px solid #ccc",
-                                    borderRadius: "4px",
-                                    fontSize: "16px",
-                                    marginBottom: "10px",
-                                    height: "100px",
-                                }}
-                            />
-                        </div>
-
-                        <IconButton
-                            icon="fa-plus-circle"
-                            label="Add Experience"
-                            onClick={handleAddExperience}
-                        />
-                        <IconButton
-                            icon="fa-trash"
-                            label="Remove Experience"
-                            onClick={() => handleRemoveExperience(index)}
+                <div style={ContainerStyles}>
+                    <div>
+                        <label htmlFor="nameInput" className="block font-medium mb-1">
+                            Name:
+                        </label>
+                        <input
+                            type="text"
+                            id="nameInput"
+                            value={name}
+                            onChange={handleNameChange}
+                            style={InputStyles}
                         />
                     </div>
-                ))}
 
+                    <div>
+                        <label htmlFor="professionInput" className="block font-medium mb-1">Profession: </label>
+                        <input
+                            type="text"
+                            id="professionInput"
+                            value={profession}
+                            onChange={handleProfessionChange}
+                            style={InputStyles}
+                        />
+                    </div>
+
+                    <div style={{marginBottom: "10px"}}>
+                        <label htmlFor="emailInput" className="block font-medium mb-1">Email: </label>
+                        <input
+                            type="email"
+                            id="emailInput"
+                            value={email}
+                            onChange={handleEmailChange}
+                            style={InputStyles}
+                        />
+                    </div>
+
+                    <div style={{marginBottom: "10px"}}>
+                        <label htmlFor="phoneInput" className="block font-medium mb-1">Phone: </label>
+                        <input
+                            type="tel"
+                            id="phoneInput"
+                            value={phone}
+                            onChange={handlePhoneChange}
+                            style={InputStyles}
+                        />
+                    </div>
+
+                    <div style={{marginBottom: "10px"}}>
+                        <label htmlFor="addressInput" className="block font-medium mb-1">Address: </label>
+                        <input
+                            type="address"
+                            id="addressInput"
+                            value={address}
+                            onChange={handleAddressChange}
+                            style={InputStyles}
+                        />
+                    </div>
+
+                    <div style={{marginBottom: "10px"}}>
+                        <label htmlFor="experienceInput" className="block font-medium mb-1">Profile: </label>
+                        <textarea
+                            id="profileInput"
+                            value={profile}
+                            onChange={handleProfileChange}
+                            style={InputStyles}
+                        />
+                    </div>
+
+                    <h3 className="text-2xl my-5">Employment history</h3>
+
+                    {/* Add multiple fields for many jobs */}
+                    {experiences.map((experience, index) => (
+                        <div key={index}>
+                            <div style={{marginBottom: "10px"}}>
+                                <label htmlFor="titleInput" className="block font-medium mb-1 mt-5">Title:</label>
+                                <input
+                                    type="text"
+                                    id="titleInput"
+                                    value={experience.title}
+                                    onChange={(e) =>
+                                        handleExperienceChange(index, "title", e.target.value)
+                                    }
+                                    style={InputStyles}
+                                />
+                            </div>
+
+                            <div style={{marginBottom: "10px"}}>
+                                <label htmlFor="companyInput" className="block font-medium mb-1">Company:</label>
+                                <input
+                                    type="company"
+                                    id="companyInput"
+                                    value={experience.company}
+                                    onChange={(e) =>
+                                        handleExperienceChange(index, "company", e.target.value)
+                                    }
+                                    style={InputStyles}
+                                />
+                            </div>
+
+                            <div style={{marginBottom: "10px"}}>
+                                <label htmlFor="dateInput" className="block font-medium mb-1">Date:</label>
+                                <input
+                                    type="date"
+                                    id="dateInput"
+                                    value={experience.date}
+                                    onChange={(e) =>
+                                        handleExperienceChange(index, "date", e.target.value)
+                                    }
+                                    style={InputStyles}
+                                />
+                            </div>
+
+                            <div style={{marginBottom: "10px"}}>
+                                <label htmlFor="experienceInput" className="block font-medium mb-1">Description</label>
+                                <textarea
+                                    id="descriptionInput"
+                                    value={experience.description}
+                                    onChange={(e) =>
+                                        handleExperienceChange(index, "description", e.target.value)
+                                    }
+                                    style={InputStyles}
+                                />
+                            </div>
+
+                            {/* Add spacing between buttons */}
+                            <div className="space-x-4">
+                                <IconButton
+                                    icon="fa-plus-circle"
+                                    label="Add New Job"
+                                    onClick={handleAddExperience}
+                                />
+                                <IconButton
+                                    icon="fa-trash"
+                                    label="Remove Job"
+                                    onClick={() => handleRemoveExperience(index)}
+                                />
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
             </div>
 
             {/*Display input*/}
-            <div style={{flex: 1, marginLeft: "20px"}}>
+            <div style={{flex: 3, marginLeft: "20px"}}>
 
                 {/* Main CV info */}
                 <div style={{marginBottom: "10px"}}>
